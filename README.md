@@ -3,7 +3,7 @@
 Stoic API is a simple and lightweight API that provides quotes from different Stoic philosophers such as Marcus Aurelius, Seneca, and Epictetus.  
 It is built with **Next.js (App Router)** and deployed on **Vercel**.
 
-You can use this API for personal projects, inspiration apps, or simply to learn more about Stoicism.
+You can use this API for personal projects, inspiration apps, or simply to learn more about Stoicism. (I'll be adding quotes every day)
 
 ---
 
