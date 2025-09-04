@@ -48,3 +48,19 @@ const res = await fetch("https://stoic-api-red.vercel.app/api/quotes?max=5");
 const data = await.res.json();
 console.log(data)
 ```
+
+## 🤝 Contributing
+
+Contributions are welcome! If you'd like to help improve the API:
+
+1. **Fork** the repository
+2. **Create** a new branch (`git checkout -b new-branch`)
+3. **Commit** your changes (`git commit -m 'feat: add new feature'`)
+4. **Push** to your branch (`git push origin new-branch`)
+5. Open a **Pull Request**
+
+You can also open **issues** if you find bugs or want to suggest new features.
+
+## 📜 License
+
+This project is licensed under the [MIT License](./LICENSE).
