@@ -63,4 +63,4 @@ You can also open **issues** if you find bugs or want to suggest new features.
 
 ## 📜 License
 
-This project is licensed under the [MIT License](./LICENSE).
+This project is licensed under the [MIT License](./LICENSE.md).
