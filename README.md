@@ -1,16 +1,50 @@
 # Stoic API
 
-This is a personal API I made to use in a personal project. You can use it to fetch stoic quotes and collaborate to improve the API.
+Stoic API is a simple and lightweight API that provides quotes from different Stoic philosophers such as Marcus Aurelius, Seneca, and Epictetus.  
+It is built with **Next.js (App Router)** and deployed on **Vercel**.
 
-## How to use
+You can use this API for personal projects, inspiration apps, or simply to learn more about Stoicism.
 
-To fetch quotes from this API you have to use [https://stoic-api-red.vercel.app/api/quotes](https://stoic-api-red.vercel.app/api/quotes).
+---
 
-## Random Quotes
+## 📌 Endpoints
 
-To fetch random quotes from this API you can use [https://stoic-api-red.vercel.app/api/quotes/random](https://stoic-api-red.vercel.app/api/quotes/random)
+### All quotes
 
-## Specific author quotes
+```bash
+GET https://stoic-api-red.vercel.app/api/quotes
+```
 
-To fetch quotes from specific author (i.e, Marcus Aurelius) you can use [https://stoic-api-red.vercel.app/api/quotes/marcus](https://stoic-api-red.vercel.app/api/quotes/marcus).
-You can use a different endpoints for differents authors such as Seneca `/quotes/seneca`, Epictetus `/quotes/epictetus`
+By default returns **20 quotes**. You can change this with a `max` query (up to 100).
+
+```bash
+GET https://stoic-api-red.vercel.app/api/quotes?max=50
+```
+
+### Random Quotes
+
+```bash
+GET https://stoic-api-red.vercel.app/api/quotes/random
+```
+
+### Quotes by Author
+
+```bash
+GET https://stoic-api-red.vercel.app/api/quotes/marcus
+GET https://stoic-api-red.vercel.app/api/quotes/seneca
+GET https://stoic-api-red.vercel.app/api/quotes/epictetus
+```
+
+### Random Quote by Author
+
+```bash
+GET https://stoic-api-red.vercel.app/api/quotes/marcus?random
+```
+
+## ⚡ Example Usage
+
+```js
+const res = await fetch("https://stoic-api-red.vercel.app/api/quotes?max=5");
+const data = await.res.json();
+console.log(data)
+```
