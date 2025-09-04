@@ -1,42 +1,61 @@
 export default function Home() {
   return (
-    <main className='3xl:mx-24 mx-8 font-sans text-neutral-50 md:mx-12 lg:mx-16'>
+    <main className='mx-8 font-sans md:mx-12 lg:mx-16 2xl:mx-72'>
       <header>
-        <h1 className='3xl:my-12 my-6 text-center text-3xl'>Stoic API</h1>
+        <h1 className='3xl:my-12 my-6 text-center text-3xl font-bold'>
+          Stoic API
+        </h1>
       </header>
 
-      <section>
-        <p className='text-base xl:text-lg'>
+      <section className='tracking-normal'>
+        <p className='text-base leading-7'>
           This is a simple API that gives you a ton of stoic quotes from the
-          most famous stoic that have lived. Only have to fecth{' '}
-          <code className='text-foreground rounded-md border border-neutral-800 bg-neutral-900/50 px-2 py-1 font-mono text-sm'>
+          most famous stoic that have lived. Only have to use{' '}
+          <code className='rounded-md border border-neutral-300 bg-neutral-200 px-2 py-1 font-mono text-sm'>
             https://stoic-api-red.vercel.app/api/quotes
           </code>{' '}
-          and you will recieve a tons of quotes.
+          (By default are 20 quotes). If you want more quotes you can use{' '}
+          <code className='rounded-md border border-neutral-300 bg-neutral-200 px-2 py-1 font-mono text-sm'>
+            https://stoic-api-red.vercel.app/api/quotes?max=number
+          </code>
         </p>
 
-        <h2 className='my-8 text-xl font-semibold'>Random Quotes</h2>
-        <p className='text-base xl:text-lg'>
+        <h2 className='my-8 text-xl font-semibold text-neutral-600'>
+          - Random Quotes
+        </h2>
+        <p className='text-base leading-7'>
           To fetch random quotes use this URL{' '}
-          <code className='text-foreground rounded-md border border-neutral-800 bg-neutral-900/50 px-2 py-1 font-mono text-sm'>
+          <code className='rounded-md border border-neutral-300 bg-neutral-200 px-2 py-1 font-mono text-sm'>
             https://stoic-api-red.vercel.app/api/quotes/random
           </code>
           .
         </p>
 
-        <h2 className='my-8 text-xl font-semibold'>
-          Quotes from a specific author
+        <h2 className='my-8 text-xl font-semibold text-neutral-600'>
+          - Quotes from a specific author
         </h2>
-        <p className='text-base xl:text-lg'>
+        <p className='text-base leading-7'>
           To fetch Marcus Aurelius quotes use this URL{' '}
-          <code className='text-foreground rounded-md border border-neutral-800 bg-neutral-900/50 px-2 py-1 font-mono text-sm'>
+          <code className='rounded-md border border-neutral-300 bg-neutral-200 px-2 py-1 font-mono text-sm'>
             https://stoic-api-red.vercel.app/api/quotes/marcus
           </code>
           . You can choose between{' '}
-          <code className='text-foreground rounded-md border border-neutral-800 bg-neutral-900/50 px-2 py-1 font-mono text-sm'>
+          <code className='rounded-md border border-neutral-300 bg-neutral-200 px-2 py-1 font-mono text-sm'>
             marcus | seneca | epictetus
           </code>
           .
+        </p>
+
+        <h3 className='my-6 font-semibold text-neutral-600'>
+          -- Random quote from specific author
+        </h3>
+        <p className='text-base leading-7'>
+          To fetch a random quote from Marcus Aurelius, add this query to the
+          URL{' '}
+          <code className='text-foreground rounded-md border border-neutral-300 bg-neutral-200 px-2 py-1 font-mono text-sm'>
+            https://stoic-api-red.vercel.app/api/quotes/marcus?random
+          </code>
+          . This applies to every author.
         </p>
       </section>
 
@@ -45,7 +64,7 @@ export default function Home() {
           <p className='text-center text-sm'>
             &copy;{' '}
             <a
-              className='underline underline-offset-2'
+              className='font-medium'
               href='https://github.com/Carlosaac23/'
               rel='noopener noreferrer'
               target='_blank'
