@@ -63,9 +63,7 @@ export default function Home() {
           </div>
         </div>
 
-        <h2 className='my-8 text-xl font-semibold text-neutral-600'>
-          - Random Quotes
-        </h2>
+        <h2 className='my-8 text-xl font-bold'>Random Quotes</h2>
         <p className='text-base leading-7'>
           To fetch random quotes use this URL{' '}
           <code className='rounded-md border border-neutral-300 bg-neutral-200 px-2 py-1 font-mono text-sm'>
@@ -74,8 +72,8 @@ export default function Home() {
           .
         </p>
 
-        <h2 className='my-8 text-xl font-semibold text-neutral-600'>
-          - Quotes from a specific author
+        <h2 className='my-8 text-xl font-bold'>
+          Quotes from a specific author
         </h2>
         <p className='text-base leading-7'>
           To fetch Marcus Aurelius quotes use this URL{' '}
@@ -89,9 +87,7 @@ export default function Home() {
           .
         </p>
 
-        <h3 className='my-6 font-semibold text-neutral-600'>
-          -- Random quote from specific author
-        </h3>
+        <h3 className='my-6 font-bold'>Random quote from specific author</h3>
         <p className='text-base leading-7'>
           To fetch a random quote from Marcus Aurelius, add this query to the
           URL{' '}
