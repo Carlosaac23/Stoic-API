@@ -33,6 +33,7 @@ GET https://stoic-api-red.vercel.app/api/quotes/random
 GET https://stoic-api-red.vercel.app/api/quotes/marcus
 GET https://stoic-api-red.vercel.app/api/quotes/seneca
 GET https://stoic-api-red.vercel.app/api/quotes/epictetus
+GET https://stoic-api-red.vercel.app/api/quotes/zeno
 ```
 
 ### Random Quote by Author
