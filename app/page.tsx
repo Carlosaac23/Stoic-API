@@ -1,4 +1,21 @@
+'use client';
+
+import { useState } from 'react';
+
+type Quote = {
+  author: string;
+  quote: string;
+};
+
 export default function Home() {
+  const [quote, setQuote] = useState<Quote | null>(null);
+
+  const fetchQuote = async () => {
+    const res = await fetch('/api/quotes/random');
+    const data = await res.json();
+    setQuote(data);
+  };
+
   return (
     <main className='mx-8 font-sans md:mx-12 lg:mx-16 2xl:mx-72'>
       <header>
@@ -19,6 +36,30 @@ export default function Home() {
             https://stoic-api-red.vercel.app/api/quotes?max=number
           </code>
         </p>
+
+        <div>
+          <h3 className='mt-4 mb-2 font-semibold'>Live Preview</h3>
+          <div className='md:flex md:items-center md:gap-4'>
+            {quote ? (
+              <div className='mb-2 rounded-md bg-neutral-200 p-3 md:mb-0 md:max-w-xl'>
+                <p className='text-sm'>
+                  <em>{quote.quote}</em>
+                </p>
+                <p className='text-sm'>
+                  - <strong>{quote.author}</strong>
+                </p>
+              </div>
+            ) : (
+              <p>Loading...</p>
+            )}
+            <button
+              className='cursor-pointer rounded-md bg-neutral-900 px-4 py-2 font-semibold text-neutral-50 shadow-sm'
+              onClick={fetchQuote}
+            >
+              Fetch Quote
+            </button>
+          </div>
+        </div>
 
         <h2 className='my-8 text-xl font-semibold text-neutral-600'>
           - Random Quotes
@@ -59,8 +100,8 @@ export default function Home() {
         </p>
       </section>
 
-      <div className='fixed right-0 bottom-0 left-0'>
-        <footer className='py-4'>
+      <div className='md:fixed md:right-0 md:bottom-0 md:left-0'>
+        <footer className='mt-10 pb-6'>
           <p className='text-center text-sm'>
             &copy;{' '}
             <a
