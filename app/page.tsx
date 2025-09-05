@@ -41,7 +41,7 @@ export default function Home() {
           <h3 className='mt-4 mb-2 font-semibold'>Live Preview</h3>
           <div className='md:flex md:items-center md:gap-4'>
             {quote ? (
-              <div className='mb-2 rounded-md bg-neutral-200 p-3 md:mb-0 md:max-w-xl'>
+              <div className='mb-2 rounded-md bg-neutral-200 p-3 inset-shadow-xs md:mb-0 md:max-w-xl'>
                 <p className='mb-2 text-sm'>
                   <em>{quote.quote}</em>
                 </p>
