@@ -42,7 +42,7 @@ export default function Home() {
           <div className='md:flex md:items-center md:gap-4'>
             {quote ? (
               <div className='mb-2 rounded-md bg-neutral-200 p-3 md:mb-0 md:max-w-xl'>
-                <p className='text-sm'>
+                <p className='mb-2 text-sm'>
                   <em>{quote.quote}</em>
                 </p>
                 <p className='text-sm'>
@@ -50,7 +50,9 @@ export default function Home() {
                 </p>
               </div>
             ) : (
-              <p>Loading...</p>
+              <div className='mb-2 w-44 rounded-md bg-neutral-200 p-4 inset-shadow-sm md:mb-0 md:max-w-xl'>
+                <p className='text-sm'>Try fetching a quote</p>
+              </div>
             )}
             <button
               className='cursor-pointer rounded-md bg-neutral-900 px-4 py-2 font-semibold text-neutral-50 shadow-sm'
@@ -82,7 +84,7 @@ export default function Home() {
           </code>
           . You can choose between{' '}
           <code className='rounded-md border border-neutral-300 bg-neutral-200 px-2 py-1 font-mono text-sm'>
-            marcus | seneca | epictetus
+            marcus | seneca | epictetus | zeno
           </code>
           .
         </p>
