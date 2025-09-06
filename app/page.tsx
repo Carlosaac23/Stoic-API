@@ -55,7 +55,7 @@ export default function Home() {
               </div>
             )}
             <button
-              className='cursor-pointer rounded-md bg-neutral-900 px-4 py-2 font-semibold text-neutral-50 shadow-sm'
+              className='cursor-pointer rounded-md bg-neutral-900 px-4 py-2 font-semibold text-neutral-50 shadow-sm duration-100 ease-out active:scale-97'
               onClick={fetchQuote}
             >
               Fetch Quote
