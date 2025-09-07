@@ -27,7 +27,7 @@ export default function Home() {
       <section className='tracking-normal'>
         <p className='text-base leading-7'>
           This is a simple API that gives you a ton of stoic quotes from the
-          most famous stoic that have lived. Only have to use{' '}
+          most famous Stoics that have lived. Only have to use{' '}
           <code className='rounded-md border border-neutral-300 bg-neutral-200 px-2 py-1 font-mono text-sm'>
             https://stoic-api-red.vercel.app/api/quotes
           </code>{' '}
