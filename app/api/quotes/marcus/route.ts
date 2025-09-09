@@ -1,5 +1,5 @@
 import { NextResponse } from 'next/server';
-import quotes from '@/data/quotes.json';
+import quotes from '@/data/marcus.json';
 
 export async function GET(request: Request) {
   const { searchParams } = new URL(request.url);
