@@ -1,16 +1,25 @@
 import { NextResponse } from 'next/server';
-import quotes from '@/data/quotes.json';
+import epictetusQuotes from '@/data/epictetus.json';
+import marcusQuotes from '@/data/marcus.json';
+import senecaQuotes from '@/data/seneca.json';
+import zenoQuotes from '@/data/zeno.json';
 
 export async function GET(request: Request) {
   const { searchParams } = new URL(request.url);
   const limitParam = searchParams.get('max');
+  const quotes = [
+    ...marcusQuotes,
+    ...epictetusQuotes,
+    ...senecaQuotes,
+    ...zenoQuotes,
+  ];
 
   // default limit
   let limit = 20;
 
   if (limitParam) {
     const parsed = parseInt(limitParam, 10);
-    if (!isNaN(parsed)) {
+    if (!Number.isNaN(parsed)) {
       limit = Math.min(parsed, 100);
     }
   }
