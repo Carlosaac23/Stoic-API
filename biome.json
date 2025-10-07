@@ -6,10 +6,6 @@
 		"useIgnoreFile": true,
 		"defaultBranch": "main"
 	},
-	"files": {
-		"ignoreUnknown": true,
-		"includes": ["**", "!node_modules", "!.next", "!dist", "!build"]
-	},
 	"formatter": {
 		"enabled": true,
 		"indentWidth": 2,
