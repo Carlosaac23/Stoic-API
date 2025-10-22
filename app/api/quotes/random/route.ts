@@ -5,12 +5,12 @@ import senecaQuotes from '@/data/seneca.json';
 import zenoQuotes from '@/data/zeno.json';
 
 export async function GET() {
-	const quotes = [
-		...epictetusQuotes,
-		...marcusQuotes,
-		...senecaQuotes,
-		...zenoQuotes,
-	];
-	const randomIndex = Math.floor(Math.random() * quotes.length);
-	return NextResponse.json(quotes[randomIndex]);
+  const quotes = [
+    ...epictetusQuotes,
+    ...marcusQuotes,
+    ...senecaQuotes,
+    ...zenoQuotes,
+  ];
+  const randomIndex = Math.floor(Math.random() * quotes.length);
+  return NextResponse.json(quotes[randomIndex]);
 }

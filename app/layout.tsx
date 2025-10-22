@@ -5,21 +5,21 @@ import type { Metadata } from 'next';
 import './globals.css';
 
 export const metadata: Metadata = {
-	title: 'Stoic API',
-	description: 'Stoic API that gives hundred of stoic quotes',
+  title: 'Stoic API',
+  description: 'Stoic API that gives hundred of stoic quotes',
 };
 
 export default function RootLayout({
-	children,
+  children,
 }: Readonly<{
-	children: React.ReactNode;
+  children: React.ReactNode;
 }>) {
-	return (
-		<html className={`${GeistSans.variable} ${GeistMono.variable}`} lang='en'>
-			<body className='antialiased'>
-				{children}
-				<Analytics />
-			</body>
-		</html>
-	);
+  return (
+    <html className={`${GeistSans.variable} ${GeistMono.variable}`} lang='en'>
+      <body className='antialiased'>
+        {children}
+        <Analytics />
+      </body>
+    </html>
+  );
 }
