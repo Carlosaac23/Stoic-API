@@ -2,6 +2,7 @@
   "name": "stoic-api",
   "version": "0.1.0",
   "private": true,
+  "type": "module",
   "scripts": {
     "dev": "next dev --turbopack",
     "build": "next build --turbopack",
@@ -9,7 +10,8 @@
     "fmt": "oxfmt",
     "fmt:check": "oxfmt --check",
     "lint": "oxlint",
-    "lint:fix": "oxlint --fix"
+    "lint:fix": "oxlint --fix",
+    "scrape": "pnpx tsx ./lib/scrape-quotes.ts"
   },
   "dependencies": {
     "@vercel/analytics": "^1.6.1",
