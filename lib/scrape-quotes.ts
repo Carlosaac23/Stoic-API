@@ -7,7 +7,7 @@ puppeteer.use(StealthPlugin());
 
 type Author = 'marcus' | 'seneca' | 'epictetus' | 'zeno';
 
-const autors_url = {
+const authorsURL = {
   marcus: '17212.Marcus_Aurelius',
   seneca: '4918776.Seneca',
   epictetus: '13852.Epictetus',
@@ -29,7 +29,7 @@ async function scrapeQuotes(autorName: Author, totalPages = 1) {
   const authorQuotes = [];
 
   for (let i = 1; i <= totalPages; i++) {
-    const URL = `https://www.goodreads.com/author/quotes/${autors_url[autorName]}${i === 1 ? '' : `?page=${i}`}`;
+    const URL = `https://www.goodreads.com/author/quotes/${authorsURL[autorName]}${i === 1 ? '' : `?page=${i}`}`;
     await page.goto(URL, {
       waitUntil: 'networkidle2',
     });
