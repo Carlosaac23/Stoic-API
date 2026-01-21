@@ -5,7 +5,17 @@ import StealthPlugin from 'puppeteer-extra-plugin-stealth';
 
 puppeteer.use(StealthPlugin());
 
-async function scrapeQuotes() {
+type Author = 'marcus' | 'seneca' | 'epictetus' | 'zeno';
+
+const autors_url = {
+  marcus: '17212.Marcus_Aurelius',
+  seneca: '4918776.Seneca',
+  epictetus: '13852.Epictetus',
+  zeno: '833825.Zeno_of_Citium',
+};
+
+async function scrapeQuotes(autorName: Author, totalPages = 1) {
+  console.log(`Starting to scrape ${autorName}...`);
   const browser = await puppeteer.launch({
     headless: true,
     args: [
@@ -15,53 +25,71 @@ async function scrapeQuotes() {
     ],
   });
   const page = await browser.newPage();
-
-  await page.goto(
-    'https://www.goodreads.com/author/quotes/17212.Marcus_Aurelius',
-    {
-      waitUntil: 'networkidle2',
-    }
-  );
-  await page.waitForSelector('.quoteText', { timeout: 10000 });
   await page.setViewport({ width: 1080, height: 1024 });
+  const authorQuotes = [];
 
-  const quotes = await page.evaluate(() => {
-    const quotesList = document.querySelectorAll('.quoteText');
-    const quotesArray = [...quotesList];
-    return quotesArray.map(quoteElement => {
-      const quoteElementText = quoteElement.textContent;
-      const author =
-        quoteElement
-          .querySelector('span.authorOrTitle')
-          ?.textContent.replace(',', '')
-          .trim() || '';
-      const bookLink =
-        quoteElement.querySelector('a.authorOrTitle')?.textContent.trim() || '';
-      console.log(author);
-      console.log(bookLink);
-      const textWithoutAuthor = quoteElementText.replace(author, '');
-      const cleanText = textWithoutAuthor
-        .replace(bookLink, '')
-        .replace(/\s+/g, ' ')
-        .replace('“', '')
-        .replace('--', '')
-        .trim();
-
-      return {
-        quote: cleanText,
-        author,
-      };
+  for (let i = 1; i <= totalPages; i++) {
+    const URL = `https://www.goodreads.com/author/quotes/${autors_url[autorName]}${i === 1 ? '' : `?page=${i}`}`;
+    await page.goto(URL, {
+      waitUntil: 'networkidle2',
     });
-  });
+
+    const quotes = await page.evaluate(() => {
+      const quotesArray = document.querySelectorAll('.quoteText');
+      return Array.from(quotesArray).map(quoteElement => {
+        const quoteElementText = quoteElement.textContent;
+        const author =
+          quoteElement
+            .querySelector('span.authorOrTitle')
+            ?.textContent.replace(',', '')
+            .trim() || '';
+        const bookLink =
+          quoteElement.querySelector('a.authorOrTitle')?.textContent.trim() ||
+          '';
+        const textWithoutAuthor = quoteElementText.replace(author, '');
+        const cleanText = textWithoutAuthor
+          .replace(bookLink, '')
+          .replace(/\s+/g, ' ')
+          .replace(/,(?=[^,]*$)/, '')
+          .replace('“', '')
+          .replace('”', '')
+          .replace('―', '')
+          .trim();
+
+        return {
+          quote: cleanText,
+          author,
+        };
+      });
+    });
+
+    authorQuotes.push(...quotes);
+  }
 
   try {
-    await writeFile('./data/marcus.json', JSON.stringify(quotes, null, 2));
-    console.log('File has been written successfully!');
+    await writeFile(
+      `./data/${autorName}.json`,
+      JSON.stringify(authorQuotes, null, 2)
+    );
+    console.log(`${autorName}.json file has been written successfully!`);
   } catch (error) {
     console.error('Error writing file: ', error);
   }
 
   await browser.close();
+  return authorQuotes;
 }
 
-scrapeQuotes();
+// Scrape all author's quotes
+const functionsArray = [
+  scrapeQuotes('marcus', 5),
+  scrapeQuotes('epictetus', 5),
+  scrapeQuotes('seneca', 5),
+  scrapeQuotes('zeno'),
+];
+
+try {
+  await Promise.all(functionsArray);
+} catch (error) {
+  console.error(error);
+}
