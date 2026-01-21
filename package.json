@@ -10,7 +10,8 @@
     "fmt": "oxfmt",
     "fmt:check": "oxfmt --check",
     "lint": "oxlint",
-    "lint:fix": "oxlint --fix"
+    "lint:fix": "oxlint --fix",
+    "scrape": "pnpx tsx ./lib/scrape-quotes.ts"
   },
   "dependencies": {
     "@vercel/analytics": "^1.6.1",
