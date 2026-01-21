@@ -1,4 +1,5 @@
 import { NextResponse } from 'next/server';
+
 import epictetusQuotes from '@/data/epictetus.json';
 import marcusQuotes from '@/data/marcus.json';
 import senecaQuotes from '@/data/seneca.json';
