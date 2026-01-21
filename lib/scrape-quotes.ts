@@ -81,15 +81,7 @@ async function scrapeQuotes(autorName: Author, totalPages = 1) {
 }
 
 // Scrape all author's quotes
-const functionsArray = [
-  scrapeQuotes('marcus'),
-  scrapeQuotes('epictetus'),
-  scrapeQuotes('seneca'),
-  scrapeQuotes('zeno'),
-];
-
-try {
-  await Promise.all(functionsArray);
-} catch (error) {
-  console.error(error);
-}
+await scrapeQuotes('marcus');
+await scrapeQuotes('epictetus');
+await scrapeQuotes('seneca');
+await scrapeQuotes('zeno');
