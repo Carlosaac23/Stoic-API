@@ -1,11 +1,12 @@
 import { NextResponse } from 'next/server';
+
 import quotes from '@/data/zeno.json';
 
 export async function GET(request: Request) {
   const { searchParams } = new URL(request.url);
   const randomParam = searchParams.get('random');
   const senoQuotes = quotes.filter(
-    (quote) => quote.author.toLowerCase() === 'zeno of citium',
+    quote => quote.author.toLowerCase() === 'zeno of citium'
   );
 
   if (randomParam !== null) {

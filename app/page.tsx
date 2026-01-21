@@ -19,7 +19,7 @@ export default function Home() {
   return (
     <main className='mx-8 font-sans md:mx-12 lg:mx-16 2xl:mx-72'>
       <header>
-        <h1 className='3xl:my-12 my-6 text-center text-3xl font-bold'>
+        <h1 className='my-6 text-center text-3xl font-bold 3xl:my-12'>
           Stoic API
         </h1>
       </header>
@@ -92,7 +92,7 @@ export default function Home() {
         <p className='text-base leading-7'>
           To fetch a random quote from Marcus Aurelius, add this query to the
           URL{' '}
-          <code className='text-foreground rounded-md border border-neutral-300 bg-neutral-200 px-2 py-1 font-mono text-sm'>
+          <code className='rounded-md border border-neutral-300 bg-neutral-200 px-2 py-1 font-mono text-sm text-foreground'>
             https://stoic-api-red.vercel.app/api/quotes/marcus?random
           </code>
           . This applies to every author.
