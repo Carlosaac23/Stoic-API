@@ -1,0 +1,26 @@
+{
+  "$schema": "./node_modules/oxfmt/configuration_schema.json",
+  "printWidth": 80,
+  "jsxSingleQuote": true,
+  "singleQuote": true,
+  "trailingComma": "es5",
+  "arrowParens": "avoid",
+  "experimentalSortImports": {
+    "groups": [
+      ["side-effect"],
+      ["builtin"],
+      ["external", "external-type"],
+      ["internal", "internal-type"],
+      ["parent", "parent-type"],
+      ["sibling", "sibling-type"],
+      ["index", "index-type"]
+    ]
+  },
+  "experimentalTailwindcss": {
+    "stylesheet": "./app/globals.css",
+    "attributes": ["class", "className"],
+    "functions": ["clsx", "cn"],
+    "preserveDuplicates": false,
+    "preserveWhitespace": false
+  }
+}
