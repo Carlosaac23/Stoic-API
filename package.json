@@ -6,13 +6,17 @@
     "dev": "next dev --turbopack",
     "build": "next build --turbopack",
     "start": "next start",
-    "format": "prettier . --write",
-    "lint": "eslint"
+    "fmt": "oxfmt",
+    "fmt:check": "oxfmt --check",
+    "lint": "oxlint",
+    "lint:fix": "oxlint --fix"
   },
   "dependencies": {
     "@vercel/analytics": "^1.6.1",
     "geist": "^1.5.1",
     "next": "^16.1.1",
+    "oxfmt": "^0.26.0",
+    "oxlint": "^1.41.0",
     "react": "^19.2.3",
     "react-dom": "^19.2.3"
   },
