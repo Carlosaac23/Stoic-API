@@ -82,9 +82,9 @@ async function scrapeQuotes(autorName: Author, totalPages = 1) {
 
 // Scrape all author's quotes
 const functionsArray = [
-  scrapeQuotes('marcus', 5),
-  scrapeQuotes('epictetus', 5),
-  scrapeQuotes('seneca', 5),
+  scrapeQuotes('marcus'),
+  scrapeQuotes('epictetus'),
+  scrapeQuotes('seneca'),
   scrapeQuotes('zeno'),
 ];
 
