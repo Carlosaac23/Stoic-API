@@ -1,11 +1,11 @@
-import { writeFile } from 'fs/promises';
-
 import puppeteer from 'puppeteer-extra';
 import StealthPlugin from 'puppeteer-extra-plugin-stealth';
 
-puppeteer.use(StealthPlugin());
+import type { Author, Quote } from '@/types';
 
-type Author = 'marcus' | 'seneca' | 'epictetus' | 'zeno';
+import { prisma } from '@/lib/prisma';
+
+puppeteer.use(StealthPlugin());
 
 const authorsURL = {
   marcus: '17212.Marcus_Aurelius',
@@ -26,7 +26,7 @@ async function scrapeQuotes(autorName: Author, totalPages = 1) {
   });
   const page = await browser.newPage();
   await page.setViewport({ width: 1080, height: 1024 });
-  const authorQuotes = [];
+  const authorQuotes: Quote[] = [];
 
   for (let i = 1; i <= totalPages; i++) {
     const URL = `https://www.goodreads.com/author/quotes/${authorsURL[autorName]}${i === 1 ? '' : `?page=${i}`}`;
@@ -67,13 +67,14 @@ async function scrapeQuotes(autorName: Author, totalPages = 1) {
   }
 
   try {
-    await writeFile(
-      `./data/${autorName}.json`,
-      JSON.stringify(authorQuotes, null, 2)
-    );
-    console.log(`${autorName}.json file has been written successfully!`);
+    for (const quote of authorQuotes) {
+      const { quote: quoteText, author } = quote;
+      await prisma.quote.create({ data: { quote: quoteText, author } });
+    }
   } catch (error) {
-    console.error('Error writing file: ', error);
+    if (error instanceof Error) {
+      console.error('Error saving to DB:', error.message);
+    }
   }
 
   await browser.close();
