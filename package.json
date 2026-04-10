@@ -11,7 +11,8 @@
     "fmt:check": "oxfmt --check",
     "lint": "oxlint",
     "lint:fix": "oxlint --fix",
-    "scrape": "pnpx tsx ./lib/scrape-quotes.ts"
+    "scrape": "pnpx tsx ./lib/scrape-quotes.ts",
+    "postinstall": "prisma generate && prisma migrate deploy"
   },
   "dependencies": {
     "@prisma/adapter-pg": "^7.7.0",
