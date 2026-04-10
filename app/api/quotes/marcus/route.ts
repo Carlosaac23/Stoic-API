@@ -1,13 +1,16 @@
 import { NextResponse } from 'next/server';
 
-import quotes from '@/data/marcus.json';
+import type { Quote } from '@/types';
+
+import { prisma } from '@/lib/prisma';
 
 export async function GET(request: Request) {
   const { searchParams } = new URL(request.url);
   const randomParam = searchParams.get('random');
-  const marcoQuotes = quotes.filter(
-    quote => quote.author.toLowerCase() === 'marcus aurelius'
-  );
+
+  const marcoQuotes: Quote[] = await prisma.quote.findMany({
+    where: { author: { equals: 'marcus aurelius', mode: 'insensitive' } },
+  });
 
   if (randomParam !== null) {
     const randomQuote = Math.floor(Math.random() * marcoQuotes.length);
