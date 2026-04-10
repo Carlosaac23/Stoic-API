@@ -1,13 +1,16 @@
 import { NextResponse } from 'next/server';
 
-import quotes from '@/data/epictetus.json';
+import type { Quote } from '@/types';
+
+import { prisma } from '@/lib/prisma';
 
 export async function GET(request: Request) {
   const { searchParams } = new URL(request.url);
   const randomParam = searchParams.get('random');
-  const epictetusQuotes = quotes.filter(
-    quote => quote.author.toLowerCase() === 'epictetus'
-  );
+
+  const epictetusQuotes: Quote[] = await prisma.quote.findMany({
+    where: { author: { equals: 'epictetus', mode: 'insensitive' } },
+  });
 
   if (randomParam !== null) {
     const randomQuote = Math.floor(Math.random() * epictetusQuotes.length);

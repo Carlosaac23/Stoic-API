@@ -1,18 +1,21 @@
 import { NextResponse } from 'next/server';
 
-import quotes from '@/data/zeno.json';
+import type { Quote } from '@/types';
+
+import { prisma } from '@/lib/prisma';
 
 export async function GET(request: Request) {
   const { searchParams } = new URL(request.url);
   const randomParam = searchParams.get('random');
-  const senoQuotes = quotes.filter(
-    quote => quote.author.toLowerCase() === 'zeno of citium'
-  );
+
+  const zenoQuotes: Quote[] = await prisma.quote.findMany({
+    where: { author: { contains: 'zeno', mode: 'insensitive' } },
+  });
 
   if (randomParam !== null) {
-    const randomQuote = Math.floor(Math.random() * senoQuotes.length);
-    return NextResponse.json(senoQuotes[randomQuote]);
+    const randomQuote = Math.floor(Math.random() * zenoQuotes.length);
+    return NextResponse.json(zenoQuotes[randomQuote]);
   } else {
-    return NextResponse.json(senoQuotes);
+    return NextResponse.json(zenoQuotes);
   }
 }

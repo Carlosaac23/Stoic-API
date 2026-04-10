@@ -11,25 +11,32 @@
     "fmt:check": "oxfmt --check",
     "lint": "oxlint",
     "lint:fix": "oxlint --fix",
-    "scrape": "pnpx tsx ./lib/scrape-quotes.ts"
+    "scrape": "pnpx tsx ./lib/scrape-quotes.ts",
+    "postinstall": "prisma generate && prisma migrate deploy"
   },
   "dependencies": {
-    "@vercel/analytics": "^1.6.1",
-    "geist": "^1.5.1",
-    "next": "^16.1.4",
-    "oxfmt": "^0.26.0",
-    "oxlint": "^1.41.0",
+    "@prisma/adapter-pg": "^7.7.0",
+    "@prisma/client": "^7.7.0",
+    "@vercel/analytics": "^2.0.1",
+    "dotenv": "^17.4.1",
+    "geist": "^1.7.0",
+    "next": "^16.2.3",
+    "pg": "^8.20.0",
     "puppeteer-extra": "^3.3.6",
     "puppeteer-extra-plugin-stealth": "^2.11.2",
-    "react": "^19.2.3",
-    "react-dom": "^19.2.3"
+    "react": "^19.2.5",
+    "react-dom": "^19.2.5"
   },
   "devDependencies": {
-    "@tailwindcss/postcss": "^4",
-    "@types/node": "^25.0.0",
-    "@types/react": "^19",
+    "@tailwindcss/postcss": "^4.2.2",
+    "@types/node": "^25.6.0",
+    "@types/pg": "^8.20.0",
+    "@types/react": "^19.2.14",
     "@types/react-dom": "^19",
-    "tailwindcss": "^4",
-    "typescript": "^5"
+    "oxfmt": "^0.40.0",
+    "oxlint": "^1.59.0",
+    "prisma": "^7.7.0",
+    "tailwindcss": "^4.2.2",
+    "typescript": "^6.0.2"
   }
 }

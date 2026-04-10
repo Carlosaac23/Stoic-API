@@ -1,9 +1,21 @@
 import { NextResponse } from 'next/server';
 
-import epictetusQuotes from '@/data/epictetus.json';
-import marcusQuotes from '@/data/marcus.json';
-import senecaQuotes from '@/data/seneca.json';
-import zenoQuotes from '@/data/zeno.json';
+import type { Quote } from '@/types';
+
+import { prisma } from '@/lib/prisma';
+
+const epictetusQuotes: Quote[] = await prisma.quote.findMany({
+  where: { author: { equals: 'epictetus', mode: 'insensitive' } },
+});
+const marcusQuotes: Quote[] = await prisma.quote.findMany({
+  where: { author: { equals: 'marcus aurelius', mode: 'insensitive' } },
+});
+const senecaQuotes: Quote[] = await prisma.quote.findMany({
+  where: { author: { contains: 'seneca', mode: 'insensitive' } },
+});
+const zenoQuotes: Quote[] = await prisma.quote.findMany({
+  where: { author: { contains: 'zeno', mode: 'insensitive' } },
+});
 
 export async function GET(request: Request) {
   const { searchParams } = new URL(request.url);
