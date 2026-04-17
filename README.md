@@ -1,9 +1,9 @@
 # Stoic API
 
-Stoic API is a simple and lightweight API that provides quotes from different Stoic philosophers such as Marcus Aurelius, Seneca, and Epictetus.  
+Stoic API is a simple and lightweight API that provides quotes from different Stoic philosophers such as Marcus Aurelius, Seneca, Epictetus and Zeno.  
 It is built with **Next.js (App Router)** and deployed on **Vercel**.
 
-You can use this API for personal projects, inspiration apps, or simply to learn more about Stoicism. (I'll be adding quotes every day)
+You can use this API for personal projects, inspiration apps, or simply to learn more about Stoicism.
 
 ---
 
@@ -15,7 +15,7 @@ You can use this API for personal projects, inspiration apps, or simply to learn
 GET https://stoic-api-red.vercel.app/api/quotes
 ```
 
-By default returns **20 quotes**. You can change this with a `max` query (up to 100).
+By default returns **10 quotes**. You can change this with a `max` param (up to 100).
 
 ```bash
 GET https://stoic-api-red.vercel.app/api/quotes?max=50
@@ -24,7 +24,7 @@ GET https://stoic-api-red.vercel.app/api/quotes?max=50
 ### Random Quotes
 
 ```bash
-GET https://stoic-api-red.vercel.app/api/quotes/random
+GET https://stoic-api-red.vercel.app/api/quotes?random
 ```
 
 ### Quotes by Author
@@ -48,6 +48,20 @@ GET https://stoic-api-red.vercel.app/api/quotes/marcus?random
 const res = await fetch("https://stoic-api-red.vercel.app/api/quotes?max=5");
 const data = await.res.json();
 console.log(data)
+
+// Result
+[
+  {
+    "id": 63,
+    "quote": "Luck is what happens when preparation meets opportunity.",
+    "author": "Seneca"
+  },
+  {
+    "id": 1,
+    "quote": "You have power over your mind - not outside events. Realize this, and you will find strength.",
+    "author": "Marcus Aurelius"
+  }...
+]
 ```
 
 ## 🤝 Contributing
